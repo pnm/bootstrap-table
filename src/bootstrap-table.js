@@ -308,7 +308,7 @@
         striped: false,
         columns: [[]],
         data: [],
-        dataField: 'rows',
+        dataField: '',
         method: 'get',
         url: undefined,
         ajax: undefined,
@@ -1501,6 +1501,8 @@
 
         this.initPagination();
         if (this.options.sidePagination === 'server') {
+            if (this.options.dataField === '')
+                this.options.dataField = 'rows'; //to fix teh datafield issue rather in default do it heer
             this.initServer();
         } else {
             this.initBody();
@@ -2310,7 +2312,10 @@
         
             fixedScroll = data.fixedScroll;
             //data = data.data;
+            if (this.options.dataField != '') //check if the dataField has beeb set default as row
             data = data[this.options.dataField];
+            else 
+            data = data.data;
         }
 
         this.initData(data);

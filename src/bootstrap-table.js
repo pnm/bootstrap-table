@@ -2307,8 +2307,10 @@
             fixedScroll = data.fixedScroll;
             data = data[this.options.dataField];
         } else if (!$.isArray(data)) { // support fixedScroll
+        
             fixedScroll = data.fixedScroll;
-            data = data.data;
+            //data = data.data;
+            data = data[this.options.dataField];
         }
 
         this.initData(data);
